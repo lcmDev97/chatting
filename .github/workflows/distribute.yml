@@ -16,7 +16,7 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
-          script:
+          script: |
             cd "/home/ubuntu/chatting"
             sudo git pull
             sudo npm install
