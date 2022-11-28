@@ -10,7 +10,10 @@ jobs:
 
     steps:
       - name: Test unit
-        run: npm run test
+        with:
+          script:
+            cd /home/ubuntu/chatting
+            sudo npm run test
 
       - name: Deploy
         uses: appleboy/ssh-action@master
@@ -23,6 +26,5 @@ jobs:
             cd /home/ubuntu/chatting
             sudo git pull
             sudo npm install
-            npm link webpack
             sudo npm run build
             pm2 reload all
