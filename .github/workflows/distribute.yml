@@ -21,6 +21,6 @@ jobs:
             sudo git pull
             sudo npm install
             sudo npm link webpack
-            npm install --save-dev fork-ts-checker-webpack-plugin
+            sudo npm install --save-dev fork-ts-checker-webpack-plugin
             sudo npm run build
             pm2 reload all
