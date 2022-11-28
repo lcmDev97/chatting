@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
+      - name: Test unit
+        run: npm run test
+
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -16,7 +19,7 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
-          script: |
+          script:
             cd /home/ubuntu/chatting
             sudo git pull
             sudo npm install
