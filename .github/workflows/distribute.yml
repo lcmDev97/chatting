@@ -20,5 +20,6 @@ jobs:
             cd "/home/ubuntu/chatting"
             sudo git pull
             sudo npm install
+            sudo npm link webpack
             sudo npm run build
             pm2 reload all
