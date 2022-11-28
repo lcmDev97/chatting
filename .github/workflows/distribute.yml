@@ -10,6 +10,7 @@ jobs:
 
     steps:
       - name: Test unit
+        uses: appleboy/ssh-action@master
         with:
           script:
             cd /home/ubuntu/chatting
