@@ -20,5 +20,5 @@ jobs:
             cd /home/ubuntu/chatting
             sudo git pull
             sudo npm install
-            sudo npm build
+            sudo npm run build
             pm2 reload all
