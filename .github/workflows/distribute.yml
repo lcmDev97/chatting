@@ -15,6 +15,9 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             ls
+            cd chatting
+            node -v
+            ls
             node -v
             sudo git pull https://github.com/lecDev97/chatting.git main
             ls
