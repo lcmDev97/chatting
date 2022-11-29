@@ -2,27 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
 
-# jobs 단위로 개별 서버(정확히는 Docker 컨테이너 단위라고 한다.)에서 작업이 수행된다.
-# 각 작업은 병렬로 실행 된다고 하는데, needs: build와 같이 표시해서 기다릴 수도 있다.
 jobs:
   build:
-    # Ubuntu, Windows, MacOS를 지원한다.
     runs-on: ubuntu-20.04
-    
-    # 영상에서도 소개됐는데, 변수 개념으로 생각하면 된다.
-    # node-version 과 같이 배열로 돼있으면, 해당 원소를 순회하면서 작업이 반복해서 실행된다.
-    # matrix 때문인지 배열만 되는 것 같다. (TODO)
-    # 응용해서 runs-on에 여러 OS에서 돌릴 수도 있다.
-    strategy:
-      matrix:
-        node-version: [16.x] # 템플릿 기본값: [10.x, 12.x, 14.x]
 
-    # uses 개념은 다른 사람이 작성한 내용을 실행하는 개념이다.
-    # actions/checkout: GitHub의 마지막 커밋으로 Checkout 한다.
-    # actions/setup-node: Node.js를 설치한다.
-    # run 개념은 명령어를 실행한다. 셸 스크립트와 동일하다.
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
@@ -32,15 +17,17 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
-            sudo -s
-            git pull
-            npm install
-            npm install --save-dev fork-ts-checker-webpack-plugin
-            npm link webpack
-            npm run build
-            cat ./src/app.service.ts
-            pm2 kill
-            pm2 start ./dist/main.js
+            ls
+            sudo cd chatting
+            sudo git pull
+            sudo cat ./src/app.service.ts
+            sudo npm install
+            sudo npm install --save-dev fork-ts-checker-webpack-plugin
+            sudo npm link webpack
+            sudo npm run build
+            pm2 reload all
+
+
 
 
       # - run: sudo -s
