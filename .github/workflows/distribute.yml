@@ -36,7 +36,7 @@ jobs:
       - run: ls
       - run: git clone https://github.com/lecDev97/chatting.git
       - run: ls
-      - rum: cd chatting
+      - run: cd chatting
       - run: npm install
       - run: npm install --save-dev fork-ts-checker-webpack-plugin
       - run: npm link webpack
