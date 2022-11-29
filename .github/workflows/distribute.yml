@@ -14,14 +14,15 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
+            ls
             node -v
             sudo git pull https://github.com/lecDev97/chatting.git main
+            ls
             cat ./src/app.service.ts
             sudo npm install
             sudo npm run build
             ls
-            sudo pm2 kill
-            sudo pm2 start ./dist/main.js
+            sudo pm2 restart
 
 
 
