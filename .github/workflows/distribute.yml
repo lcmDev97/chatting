@@ -1,13 +1,10 @@
 name: Node.js CI
-
-on:
-  push:
-    branches: [ main ]
-
+on: [push]
 jobs:
-  build:
-    runs-on: ubuntu-20.04
 
+  build:
+    name: Build
+    runs-on: ubuntu-20.04
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
@@ -17,19 +14,20 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
-            ls
-            cd chatting
-            sudo git pull
-            sudo cat ./src/app.service.ts
-            sudo npm install
-            sudo npm install --save-dev fork-ts-checker-webpack-plugin
-            sudo npm link webpack
-            sudo npm run build
-            pm2 reload all
+            whoami
+            ls -al
 
 
 
 
+      # cd chatting
+      # sudo git pull
+      # sudo cat ./src/app.service.ts
+      # sudo npm install
+      # sudo npm install --save-dev fork-ts-checker-webpack-plugin
+      # sudo npm link webpack
+      # sudo npm run build
+      # pm2 reload all
       # - run: sudo -s
       # - run: git clone https://github.com/lecDev97/chatting.git
       # - run: cd chatting
