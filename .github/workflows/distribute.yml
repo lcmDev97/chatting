@@ -15,14 +15,14 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             node -v
-            sudo git pull
+            sudo git pull https://github.com/lecDev97/chatting.git main
             cat ./src/app.service.ts
 
 
 
 
       # cd chatting
-      # sudo git pull
+      # sudo git pull https://github.com/lecDev97/chatting.git main
       # sudo cat ./src/app.service.ts
       # sudo npm install
       # sudo npm install --save-dev fork-ts-checker-webpack-plugin
