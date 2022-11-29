@@ -14,7 +14,6 @@ jobs:
       - name: Run tests
         run: |
           ls
-          cd chatting
           npm run test
 
       - name: Deploy
