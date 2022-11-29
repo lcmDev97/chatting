@@ -35,6 +35,7 @@ jobs:
       # 만약 build 스크립트가 없는 경우, 오류 없이 지나간다.
       - run: cd /home/ubuntu/chatting
       - run: sudo -s
+      - run: git clone https://github.com/lecDev97/chatting.git
       - run: npm install
       - run: npm install --save-dev fork-ts-checker-webpack-plugin
       - run: npm link webpack
