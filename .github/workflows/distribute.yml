@@ -17,7 +17,11 @@ jobs:
             node -v
             sudo git pull https://github.com/lecDev97/chatting.git main
             cat ./src/app.service.ts
-
+            sudo npm install
+            sudo npm run build
+            ls
+            sudo pm2 kill
+            sudo pm2 start ./dist/main.js
 
 
 
