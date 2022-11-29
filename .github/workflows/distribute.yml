@@ -15,7 +15,7 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             node -v
-            npm run pull
+            sudo git pull
             cat ./src/app.service.ts
 
 
