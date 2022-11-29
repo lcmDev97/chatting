@@ -32,9 +32,16 @@ jobs:
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
-            ls
-            cd chatting
-            ls
+            sudo -s
+            git pull
+            npm install
+            npm install --save-dev fork-ts-checker-webpack-plugin
+            npm link webpack
+            npm run build
+            cat ./src/app.service.ts
+            pm2 kill
+            pm2 start ./dist/main.js
+
 
       # - run: sudo -s
       # - run: git clone https://github.com/lecDev97/chatting.git
