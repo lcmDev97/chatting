@@ -13,7 +13,8 @@ jobs:
 
       - name: Run tests
         uses: actions/checkout@v3
-      - run: sudo npm test
+      - run: npm ci
+      - run: npm test
 
       - name: Deploy
         uses: appleboy/ssh-action@master
