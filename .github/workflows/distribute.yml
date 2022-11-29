@@ -31,20 +31,24 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
-      # npm ci는 npm install과 같은 기능을 수행한다. 자세한 내용은 아래 링크 참조.
-      - run: sudo -s
-      - run: ls
-      - run: git clone https://github.com/lecDev97/chatting.git
-      - run: ls
-      - run: cd chatting
-      - run: ls
-      - run: npm install
-      - run: npm install --save-dev fork-ts-checker-webpack-plugin
-      - run: npm link webpack
-      - run: cat ./src/app.service.ts
-      - run: npm run build
-      - run: pm2 kill
-      - run: pm2 start ./dist/main.js
+          script: |
+            ls
+            cd chatting
+            ls
+
+      # - run: sudo -s
+      # - run: git clone https://github.com/lecDev97/chatting.git
+      # - run: cd chatting
+      # - run: npm install
+      # - run: npm install --save-dev fork-ts-checker-webpack-plugin
+      # - run: npm link webpack
+      # - run: cat ./src/app.service.ts
+      # - run: npm run build
+      # - run: pm2 kill
+      # - run: pm2 start ./dist/main.js
+
+
+
       # --if-present 옵션은 npm 스크립트가 존재할 때만 실행시키라는 의미이다.
       # 만약 build 스크립트가 없는 경우, 오류 없이 지나간다.
       # - run: git clone https://github.com/lecDev97/chatting.git
