@@ -24,7 +24,7 @@ jobs:
     # actions/setup-node: Node.js를 설치한다.
     # run 개념은 명령어를 실행한다. 셸 스크립트와 동일하다.
     steps:
-       - name: Deploy
+      - name: Deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.REMOTE_IP }}
