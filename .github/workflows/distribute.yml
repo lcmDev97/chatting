@@ -18,7 +18,7 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             ls
-            sudo cd chatting
+            cd chatting
             sudo git pull
             sudo cat ./src/app.service.ts
             sudo npm install
