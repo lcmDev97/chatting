@@ -1,8 +1,9 @@
 name: dev push
-on: 
+on:
   push:
-    branches: [ "*" ]
-    
+    branches-ignore:
+      - main
+
 jobs:
   build:
     name: Build
