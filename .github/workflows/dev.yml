@@ -1,4 +1,4 @@
-name: chatting app CI/CD
+name: dev push
 on: 
   push:
     branches: [ main ]
