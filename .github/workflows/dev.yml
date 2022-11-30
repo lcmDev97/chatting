@@ -1,7 +1,7 @@
 name: dev push
 on: 
   push:
-    branches: [ main ]
+    branches: [ "*" ]
     
 jobs:
   build:
