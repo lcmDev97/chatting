@@ -1,4 +1,4 @@
-name: Node.js CI
+name: chatting app CI/CD
 on: 
   push:
     branches: [ main ]
