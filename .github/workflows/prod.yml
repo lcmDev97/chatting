@@ -3,24 +3,23 @@ on:
   # push:
   #   branches: [ main ]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   Deploy:
-    - name: Deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.REMOTE_IP }}
-        username: ${{ secrets.REMOTE_SSH_ID }}
-        key: ${{ secrets.REMOTE_SSH_KEY }}
-        port: ${{ secrets.REMOTE_SSH_PORT }}
-        script: |
-          node -v
-            
+    name: Deploy
+    uses: appleboy/ssh-action@master
+    with:
+      host: ${{ secrets.REMOTE_IP }}
+      username: ${{ secrets.REMOTE_SSH_ID }}
+      key: ${{ secrets.REMOTE_SSH_KEY }}
+      port: ${{ secrets.REMOTE_SSH_PORT }}
+      script: |
+        node -v
 
-        # node -v
-        # sudo git pull https://github.com/lecDev97/chatting.git ${{github.ref_name}}
-        # cat ./src/app.service.ts
-        # sudo npm install
-        # sudo npm run build
-        # sudo pm2 restart all
+      # node -v
+      # sudo git pull https://github.com/lecDev97/chatting.git ${{github.ref_name}}
+      # cat ./src/app.service.ts
+      # sudo npm install
+      # sudo npm run build
+      # sudo pm2 restart all
