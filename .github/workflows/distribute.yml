@@ -1,18 +1,19 @@
-name: Node.js CI
+name: Dev Server CI CD
 on: 
   push:
-    branches: [ main ]
+    branches: [ * ]
     
 jobs:
-  build:
-    name: Build
+  Test:
+    name: Test
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout and Run Test
         uses: actions/checkout@v3
       - run: npm ci
       - run: npm test
-
+  
+  Deploy:
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
@@ -23,8 +24,35 @@ jobs:
           script: |
             cd chatting
             node -v
-            sudo git pull https://github.com/lecDev97/chatting.git main
+            sudo git pull https://github.com/lecDev97/chatting.git ${{github.ref_name}}
             cat ./src/app.service.ts
             sudo npm install
             sudo npm run build
             sudo pm2 restart all
+
+name: Prod Server CD
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  Deploy:
+    - name: Deploy
+      uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.REMOTE_IP }}
+          username: ${{ secrets.REMOTE_SSH_ID }}
+          key: ${{ secrets.REMOTE_SSH_KEY }}
+          port: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            docker -v
+            
+
+          # node -v
+          # sudo git pull https://github.com/lecDev97/chatting.git ${{github.ref_name}}
+          # cat ./src/app.service.ts
+          # sudo npm install
+          # sudo npm run build
+          # sudo pm2 restart all
