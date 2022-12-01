@@ -52,6 +52,7 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
           script: |
             sudo docker stop chatting-app
+            sudo docker image prune
             sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:latest
-            sudo docker run -d --name chatting-app -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+            sudo docker run -d --name chatting-app -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:latest
             sudo docker ps -al 
