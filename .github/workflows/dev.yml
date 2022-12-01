@@ -13,6 +13,17 @@ jobs:
       - run: npm ci
       - run: npm test
 
+  Login:
+    runs-on: ubuntu-20.04
+    stepts:
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          script: |
+            echo "Login to docker Hub"
+
   Deploy:
     runs-on: ubuntu-20.04
     steps:
