@@ -18,7 +18,7 @@ jobs:
 
 
   Docker:
-    name: Docker Login-Build-Push :dev
+    name: Docker Login-Build-Push
     needs: [Test]
     runs-on: ubuntu-20.04
     steps:
