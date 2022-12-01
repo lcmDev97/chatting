@@ -48,7 +48,9 @@ jobs:
         run: |
           sudo docker images
           sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
-          sudo docker run ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+      - name: Run Container
+        run: |
           sudo docker images
+          sudo docker run -d -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
           sudo docker ps -al
         
