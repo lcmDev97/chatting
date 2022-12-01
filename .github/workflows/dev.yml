@@ -6,7 +6,7 @@ on:
 
 jobs:
   Test:
-    name: Test
+    name: Test Code on ${{ github.ref_name }} branch
     runs-on: ubuntu-20.04
     steps:
       - name: Run Test
