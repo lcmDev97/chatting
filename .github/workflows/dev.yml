@@ -5,18 +5,17 @@ on:
       - main
 
 jobs:
-  build:
-    name: Build
+  Test:
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Run tests
+      - name: Run Test
         uses: actions/checkout@v3
       - run: npm ci
       - run: npm test
 
+  Deploy:
+    runs-on: ubuntu-20.04
+    steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
         with:
