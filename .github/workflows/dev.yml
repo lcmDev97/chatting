@@ -43,14 +43,13 @@ jobs:
           username: ${{ secrets.REMOTE_SSH_ID }}
           key: ${{ secrets.REMOTE_SSH_KEY }}
           port: ${{ secrets.REMOTE_SSH_PORT }}
+          script: |
+            sudo docker ps -al
+            sudo docker images
+            sudo docker image prune
+            sudo docker images
+            sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+            sudo docker run -d -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+            sudo docker ps -al
 
-      - name: Pull Image
-        run: |
-          sudo docker images
-          sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
-      - name: Run Container
-        run: |
-          sudo docker images
-          sudo docker run -d -p 80:80 ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
-          sudo docker ps -al
         
