@@ -45,4 +45,10 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
 
       - name: Pull Image
-        run: sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+        run: |
+          sudo docker images
+          sudo docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+          sudo docker run ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
+          sudo docker images
+          sudo docker ps -al
+        
