@@ -1,27 +1,31 @@
 name: main pull request
-on: 
+on:
   pull_request:
-    branches: [ main ]
-    
+    branches: [main]
+
 jobs:
   build:
     name: Build
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
+      - name: Run Test
         uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm test
 
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_IP }}
-          username: ${{ secrets.REMOTE_SSH_ID }}
-          key: ${{ secrets.REMOTE_SSH_KEY }}
-          port: ${{ secrets.REMOTE_SSH_PORT }}
-          script: |
-            cd chatting
-            sudo git pull https://github.com/lecDev97/chatting.git main
-            cat ./src/app.service.ts
-            sudo npm install
-            sudo npm run build
-            sudo pm2 restart all
+  Deploy:
+    runs-on: ubuntu-20.04
+    uses: appleboy/ssh-action@master
+    steps:
+      with:
+        host: ${{ secrets.REMOTE_IP }}
+        username: ${{ secrets.REMOTE_SSH_ID }}
+        key: ${{ secrets.REMOTE_SSH_KEY }}
+        port: ${{ secrets.REMOTE_SSH_PORT }}
+        script: |
+          cd chatting
+          sudo git pull https://github.com/lecDev97/chatting.git main
+          cat ./src/app.service.ts
+          sudo npm install
+          sudo npm run build
+          sudo pm2 restart all
