@@ -1,11 +1,13 @@
 name: main pull request
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 
 jobs:
   build:
-    name: Build
+    name: Test-Build-Deploy on main Branch
     runs-on: ubuntu-20.04
     steps:
       - name: Run Test
