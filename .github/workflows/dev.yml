@@ -45,6 +45,7 @@ jobs:
           port: ${{ secrets.REMOTE_SSH_PORT }}
 
       - name: Pull Image
+      - run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
         with:
           script: |
             ls
