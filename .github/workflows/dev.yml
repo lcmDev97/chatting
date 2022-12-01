@@ -26,7 +26,7 @@ jobs:
           script: |
             cd chatting
             node -v
-            sudo git pull https://github.com/lecDev97/chatting.git main
+            sudo git pull https://github.com/lecDev97/chatting.git ${{github.ref_name}}
             cat ./src/app.service.ts
             sudo npm install
             sudo npm run build
