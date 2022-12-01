@@ -1,0 +1,7 @@
+version: '3.8'
+services:
+  backend:
+      #짧은형태 (Dockerfile이름이 Dockerfile일 경우에만 사용 가능)
+      build: ./
+      ports:
+        - '8000:80'
