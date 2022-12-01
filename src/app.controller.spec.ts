@@ -16,7 +16,7 @@ describe('AppController', () => {
 
   describe('basic test', () => {
     // it('should return "chatting app"', () => {
-    //   expect(appController.getHello()).toBe('chatting app');
+    //   expect(appController.getHello()).toBe('hello world!');
     // });
 
     it('should be 4', () => {

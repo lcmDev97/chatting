@@ -1,34 +1,24 @@
-name: dev push
+name: CI on all dev branch
 on:
   push:
     branches-ignore:
       - main
 
 jobs:
-  build:
-    name: Build
+  Test:
+    name: Test
     runs-on: ubuntu-20.04
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      - name: Run tests
+      - name: Run Test
         uses: actions/checkout@v3
       - run: npm ci
       - run: npm test
 
-      - name: Deploy
-        uses: appleboy/ssh-action@master
-        with:
-          host: ${{ secrets.REMOTE_IP }}
-          username: ${{ secrets.REMOTE_SSH_ID }}
-          key: ${{ secrets.REMOTE_SSH_KEY }}
-          port: ${{ secrets.REMOTE_SSH_PORT }}
-          script: |
-            cd chatting
-            node -v
-            sudo git pull https://github.com/lecDev97/chatting.git main
-            cat ./src/app.service.ts
-            sudo npm install
-            sudo npm run build
-            sudo pm2 restart all
+        
+# *dev branch 에 push할 경우
+# 1)test code
+
+# *main branch에 push or pull Request할 경우
+# 1)test code
+# 2)pull image
+# 3)run container -d -p option or docker-compose up -d
