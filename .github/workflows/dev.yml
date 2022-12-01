@@ -46,6 +46,3 @@ jobs:
 
       - name: Pull Image
       - run: docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:dev
-        with:
-          script: |
-            ls
