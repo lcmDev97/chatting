@@ -40,11 +40,11 @@ jobs:
         run: zip -r ./$GITHUB_SHA.zip . -x "node_modules/*" "coverage/*" "src/*" "test/*" "README.md" "*.git*"
         shell: bash
 
-  env:
-    S3_BUCKET_NAME: changmincodedeploy # S3 버킷 이름입니다.
-    PROJECT_NAME: chattingApp # S3 버킷 내 폴더 이름입니다. 임의로 정하면 알아서 생성해줍니다.
-    AWS_CODEDEPLOY_APPLICATION_NAME: chattingAppCodeDeploy # CodeDeploy 애플리케이션 이름입니다.
-    AWS_CODEDEPLOY_DEPLOYMENT_GROUP_NAME: chattingAppDG # CodeDeploy 배포 그룹 이름입니다.
+        env:
+          S3_BUCKET_NAME: changmincodedeploy # S3 버킷 이름입니다.
+          PROJECT_NAME: chattingApp # S3 버킷 내 폴더 이름입니다. 임의로 정하면 알아서 생성해줍니다.
+          AWS_CODEDEPLOY_APPLICATION_NAME: chattingAppCodeDeploy # CodeDeploy 애플리케이션 이름입니다.
+          AWS_CODEDEPLOY_DEPLOYMENT_GROUP_NAME: chattingAppDG # CodeDeploy 배포 그룹 이름입니다.
       
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v1
