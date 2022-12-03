@@ -13,6 +13,6 @@ permissions:
     
 hooks:
   AfterInstall:
-    - location: ./scripts/execute.sh 
+    - location: scripts/wowo.sh 
       timeout: 600
       runas: ubuntu
