@@ -1,3 +1,2 @@
 cd /home/ubuntu/chattingApp
-sudo echo "hihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihihi"
-sudo sh script/docker-script.sh
+sudo sh scripts/docker-script.sh
