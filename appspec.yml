@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: / # 인스턴스에 복사할 S3 파일의 경로입니다. / 로 설정하면S3_BUCKET_NAME/PROJECT_NAME/GITHUB_SHA.zip을 가져옵니다.
+    destination: /home/ubuntu/chattingApp 
+    overwrite: yes 
+
+permissions:
+  - object: / 
+    pattern: '**'
+    owner: ubuntu
+    group: ubuntu
