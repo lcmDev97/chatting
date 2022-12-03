@@ -1,2 +1,2 @@
-cd /home/ubuntu/my-nest-app
+cd /home/ubuntu/chattingApp
 sh docker-script.sh
