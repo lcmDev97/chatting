@@ -22,4 +22,8 @@ COPY --from=builder /app ./
 
 EXPOSE 80
 
+RUN echo "test"
+
+RUN ls
+
 CMD ["npm", "run", "start:prod"]
