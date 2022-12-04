@@ -1,3 +1,5 @@
+docker pull changmin97/chatting-image:latest
+
 DOCKER_APP_NAME=chatting
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
 
