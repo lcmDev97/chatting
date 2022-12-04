@@ -22,12 +22,4 @@ COPY --from=builder /app ./
 
 EXPOSE 80
 
-RUN echo "test"
-
-RUN pwd
-
-RUN ls
-
-RUN cd /app/chattingApp
-
 CMD ["npm", "run", "start:prod"]

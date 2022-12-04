@@ -2,6 +2,8 @@ docker pull changmin97/chatting-image:latest
 
 pwd
 
+echo "test"
+
 cd /home/ubuntu/chattingApp
 
 pwd
