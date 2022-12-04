@@ -1,7 +1,7 @@
 version: '3'
 
 services:
-  nestapp:
+  chattingApp:
     build: .
     container_name: chatting-blue
     restart: always
