@@ -1,2 +1,2 @@
 cd /home/ubuntu/chattingApp/scripts
-sudo sh docker-script.bash
+sudo sh switch-container.bash

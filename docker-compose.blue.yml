@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  nestapp:
+    build: .
+    container_name: chatting-blue
+    restart: always
+    ports:
+      - '3002:80'
