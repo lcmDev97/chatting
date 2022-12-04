@@ -1,5 +1,5 @@
-cd /home/ubuntu/chattingApp
+cd /home/ubuntu
 
-sudo docker build -t chatting-image .
+sudo docker pull changmin97/chatting-image:latest
 
-sudo docker run -d -p 3001:80 --name chatting-container chatting-image
+sudo docker run -d -p 3001:80 --name chatting-container changmin97/chatting-image:latest

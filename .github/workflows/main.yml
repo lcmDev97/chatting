@@ -30,8 +30,7 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          script: |
-            echo "Login to docker Hub"
+
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
