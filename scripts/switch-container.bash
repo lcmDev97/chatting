@@ -1,12 +1,16 @@
 docker pull changmin97/chatting-image:latest
 
+echo "pwd에 관한 내용"
 pwd
 
-echo "test"
+echo "ls에 관한 내용"
+ls
 
 cd /home/ubuntu/chattingApp
-
+ls
 pwd
+
+npm install
 
 DOCKER_APP_NAME=chatting
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
