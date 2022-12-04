@@ -12,6 +12,6 @@ permissions:
     group: ubuntu
 
 hooks:
-  AfterInstall:
+  AfterAllowTestTraffic:
   - location: scripts/execute.bash
     timeout: 600
