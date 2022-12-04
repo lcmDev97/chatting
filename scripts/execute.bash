@@ -1,2 +1,2 @@
-cd /home/ubuntu/chattingApp/scripts
+cd /home/ubuntu/chattingApp
 sudo sh switch-container.bash
