@@ -6,12 +6,12 @@ files:
     overwrite: yes 
 
 permissions:
-  - object: / 
+  - object: /home/ubuntu 
     pattern: '**'
     owner: ubuntu
     group: ubuntu
 
 hooks:
   AfterInstall:
-  - location: scripts/execute.sh
+  - location: scripts/execute.bash
     timeout: 600
