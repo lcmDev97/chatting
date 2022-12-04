@@ -12,6 +12,6 @@ permissions:
     group: ubuntu
 
 hooks:
-AfterInstall:
-  - location: scripts/execute.sh 
+  AfterInstall:
+  - location: scripts/execute.sh
     timeout: 600
