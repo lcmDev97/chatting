@@ -22,4 +22,4 @@ COPY --from=builder /app ./
 
 EXPOSE 80
 
-CMD ["npm", "run", "start:prod"]
+CMD ["npm", "run", "start"]
