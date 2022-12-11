@@ -1,4 +1,7 @@
 #!/bin/bash
+echo "cd후 pwd 진행합니다."
+cd /home/ubuntu/chattingApp
+pwd
 
 DOCKER_APP_NAME=nestapp
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
@@ -12,6 +15,8 @@ TARGET_COLOR=""
 # Green Container가 존재하지 않으면 True
 if [ -z "$EXIST_GREEN" ]; then
     echo "> Start Green Container..."
+    echo "pwd값"
+    pwd
     TARGET_PORT=3001
     TARGET_COLOR="blue"
     docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml up -d
