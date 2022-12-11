@@ -16,15 +16,16 @@ TARGET_COLOR=""
 # Green Container가 존재하지 않으면 True
 if [ -z "$EXIST_GREEN" ]; then
     echo "> Start Green Container..."
-
     TARGET_PORT=3001
     TARGET_COLOR="blue"
-    docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml up -d
+    docker run -p 3001:3000 -d --rm --name ${DOCKER_APP_NAME}-green nestapp-green-nestapp
+    # docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml up -d
 else
     echo "> Start Blue Container..."
     TARGET_PORT=3002
     TARGET_COLOR="green"
-    docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yml up -d
+    docker run -p 3002:3000 -d --rm --name ${DOCKER_APP_NAME}-blue nestapp-green-nestapp
+    # docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yml up -d
 fi
 
 echo "> Start health check of Nest App at 'http://127.0.0.1:${TARGET_PORT}'..."
@@ -38,7 +39,8 @@ do
     if [ ${RESPONSE_CODE} -eq 200 ]; then
         echo "> New Nest App successfully running" 
         echo "> Close Old Nest App"
-        docker-compose -p ${DOCKER_APP_NAME}-${TARGET_COLOR} -f docker-compose.${TARGET_COLOR}.yml down
+        docker stop ${DOCKER_APP_NAME}-${TARGET_COLOR}
+        # docker-compose -p ${DOCKER_APP_NAME}-${TARGET_COLOR} -f docker-compose.${TARGET_COLOR}.yml down
         break
 
     elif [ ${RETRY_COUNT} -eq 10 ]; then 
