@@ -1,0 +1,9 @@
+version: '3'
+
+services:
+  chattingapp:
+    build: .
+    container_name: chatting-green
+    restart: always
+    ports:
+      - '3001:80'

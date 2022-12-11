@@ -1,0 +1,17 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/chattingApp 
+    overwrite: yes 
+
+permissions:
+  - object: /home/ubuntu 
+    pattern: '**'
+    owner: ubuntu
+    group: ubuntu
+
+hooks:
+  AfterInstall:
+  - location: scripts/execute.bash
+    timeout: 600
