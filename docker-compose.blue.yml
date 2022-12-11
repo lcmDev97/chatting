@@ -6,4 +6,4 @@ services:
     container_name: nestapp-blue
     restart: always
     ports:
-      - '3002:80'
+      - '3002:3000'
