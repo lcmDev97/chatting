@@ -3,6 +3,7 @@ echo "cd후 pwd 진행합니다."
 cd /home/ubuntu/chattingApp
 pwd
 ls
+docker pull ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:latest
 
 DOCKER_APP_NAME=nestapp
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
@@ -18,13 +19,13 @@ if [ -z "$EXIST_GREEN" ]; then
     echo "> Start Green Container..."
     TARGET_PORT=3001
     TARGET_COLOR="blue"
-    docker run -p 3001:3000 -d --rm --name ${DOCKER_APP_NAME}-green nestapp-green-nestapp
+    docker run -p 3001:3000 -d --rm --name ${DOCKER_APP_NAME}-green ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:latest
     # docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml up -d
 else
     echo "> Start Blue Container..."
     TARGET_PORT=3002
     TARGET_COLOR="green"
-    docker run -p 3002:3000 -d --rm --name ${DOCKER_APP_NAME}-blue nestapp-green-nestapp
+    docker run -p 3002:3000 -d --rm --name ${DOCKER_APP_NAME}-blue ${{ secrets.DOCKERHUB_USERNAME }}/chatting-image:latest
     # docker-compose -p ${DOCKER_APP_NAME}-blue -f docker-compose.blue.yml up -d
 fi
 
