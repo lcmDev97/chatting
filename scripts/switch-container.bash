@@ -1,12 +1,4 @@
-cd /home/ubuntu/chattingApp
-ls
-pwd
-echo "[npm install]"
-npm install
-echo "[npm run build]"
-npm run build
-
-DOCKER_APP_NAME=chatting
+DOCKER_APP_NAME=chattingapp
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
 
 # 이번 배포에서 켜질 포트 번호

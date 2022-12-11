@@ -3,7 +3,7 @@ version: '3'
 services:
   chattingapp:
     build: .
-    container_name: chatting-blue
+    container_name: chattingapp-blue
     restart: always
     ports:
       - '3002:80'
