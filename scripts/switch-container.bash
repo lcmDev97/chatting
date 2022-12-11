@@ -1,4 +1,8 @@
 #!/bin/bash
+echo "cd후 pwd 진행합니다."
+cd /home/ubuntu/chattingApp
+pwd
+ls
 
 DOCKER_APP_NAME=nestapp
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
