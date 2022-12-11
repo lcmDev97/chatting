@@ -5,11 +5,13 @@ RUN npm install
 COPY . /app
 EXPOSE 80
 RUN npm run build
-RUN cd /app/dist
-RUN echo "다음은 pwd에 대한 정보"
 RUN pwd
 
-CMD [ "node", "main.js" ]
+RUN cd /app/dist
+RUN pwd
+RUN ls
+
+CMD [ "node", "/app/dist/main.js" ]
 
 
 # # STEP 1
