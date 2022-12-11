@@ -1,9 +1,9 @@
 version: '3'
 
 services:
-  chattingapp:
+  nestapp:
     build: .
-    container_name: chattingapp-green
+    container_name: nestapp-green
     restart: always
     ports:
       - '3001:80'

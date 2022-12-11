@@ -1,4 +1,6 @@
-DOCKER_APP_NAME=chattingapp
+#!/bin/bash
+
+DOCKER_APP_NAME=nestapp
 EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
 
 # 이번 배포에서 켜질 포트 번호
