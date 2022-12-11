@@ -7,8 +7,9 @@ docker pull changmin97/chatting-image:latest
 
 DOCKER_APP_NAME=nestapp
 # EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
-EXIST_GREEN=$(docker run -p 3001:3000 -d --rm --name ${DOCKER_APP_NAME}-green changmin97/chatting-image:latest ps | grep Up)
-
+EXIST_GREEN=$(docker run -p 3001:3000 -d --rm --name ${DOCKER_APP_NAME}-green changmin97/chatting-image:latest ps | grep already)
+echo "EXIST_GREEN 정보"
+echo  ${EXIST_GREEN}
 # 이번 배포에서 켜질 포트 번호
 TARGET_PORT=0
 
