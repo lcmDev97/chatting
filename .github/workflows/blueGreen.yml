@@ -3,15 +3,15 @@ name: Deploy NestJS Application
 # workflow_dispatch는 수동으로 workflow를 작동시키도록 할 수 있도록 합니다.
 on:
   push:
-    branches: [ blueGreen ]
+    branches: [ main ]
   pull_request:
-    branches: [ blueGreen ]
+    branches: [ main ]
   
   workflow_dispatch:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     env:
       S3_BUCKET_NAME: changmincodedeploy # S3 버킷 이름입니다.
       PROJECT_NAME: chattingApp # S3 버킷 내 폴더 이름입니다. 임의로 정하면 알아서 생성해줍니다.

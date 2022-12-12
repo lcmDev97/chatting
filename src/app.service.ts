@@ -3,6 +3,6 @@ import { Injectable } from '@nestjs/common';
 @Injectable()
 export class AppService {
   getHello(): string {
-    return 'i love codedeploy.';
+    return 'should run on 3001';
   }
 }

@@ -1,9 +1,8 @@
-version: '3'
-
+version: '3.8'
 services:
-  chattingapp:
-    build: .
-    container_name: chatting-blue
+  nestapp:
+    image: changmin97/chatting-image:latest
+    container_name: nestapp-blue
     restart: always
     ports:
-      - '3002:80'
+      - '3002:3000'

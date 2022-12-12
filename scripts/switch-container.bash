@@ -1,18 +1,16 @@
 cd /home/ubuntu/chattingApp
-ls
 pwd
-echo "[npm install]"
-npm install
-echo "[npm run build]"
-npm run build
+ls
 
-DOCKER_APP_NAME=chatting
-EXIST_GREEN=$(docker-compose -p ${DOCKER_APP_NAME}-green -f docker-compose.green.yml ps | grep running)
+docker pull changmin97/chatting-image:latest
+
+DOCKER_APP_NAME=nestapp
+EXIST_GREEN=$(docker-compose -p nestapp-green -f docker-compose.green.yml ps | grep running)
 
 # 이번 배포에서 켜질 포트 번호
 TARGET_PORT=0
 
-# 이번 배포에서 꺼질 컨테이너 색상 ("green" or "blue")
+# 이번 배포에서 꺼질 컨테이너 색상 ("green" or "blue")d
 TARGET_COLOR=""
 
 # Green Container가 존재하지 않으면 True
@@ -35,16 +33,16 @@ do
     echo "> Retrying... (${RETRY_COUNT})"
 
     RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://127.0.0.1:${TARGET_PORT})
-    
+
     if [ ${RESPONSE_CODE} -eq 200 ]; then
-        echo "> New Nest App successfully running" 
+        echo "> New Nest App successfully running"
         echo "> Close Old Nest App"
         docker-compose -p ${DOCKER_APP_NAME}-${TARGET_COLOR} -f docker-compose.${TARGET_COLOR}.yml down
         break
 
-    elif [ ${RETRY_COUNT} -eq 10 ]; then 
+    elif [ ${RETRY_COUNT} -eq 10 ]; then
         echo "> Health check failed."
-        exit 1 
+        exit 1
     fi
     sleep 10
 done
