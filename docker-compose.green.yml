@@ -6,3 +6,5 @@ services:
     restart: always
     ports:
       - '3001:3000'
+    env_file:
+      - ./chatting.env
