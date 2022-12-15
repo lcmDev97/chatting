@@ -7,4 +7,4 @@ services:
     ports:
       - '3002:3000'
     env_file:
-      - ./chatting.env
+      - ../envfiles/chatting.env
