@@ -45,24 +45,25 @@ export class ChatsGateway
     this.logger.log(`connected : ${socket.id} ${socket.nsp.name}`);
   }
 
+  @SubscribeMessage('load_chat')
+  async handleChatLog(
+    @ConnectedSocket() socket: Socket,
+  ) {
+    const chatLog = await this.chattingModel.find({}).sort({"_id": -1}).limit(20)
+    return chatLog.reverse()
+  }
+
   @SubscribeMessage('new_user')
   async handleNewUser(
     @MessageBody() username: string,
     @ConnectedSocket() socket: Socket,
   ) {
+
     const exist = await this.socketModel.exists({ username });
-    if (exist) {
-      username = `${username}_${Math.floor(Math.random() * 100)}`;
-      await this.socketModel.create({
-        id: socket.id,
-        username,
-      });
-    } else {
-      await this.socketModel.create({
-        id: socket.id,
-        username,
-      });
-    }
+    await this.socketModel.create({
+      id: socket.id,
+      username,
+    });
     socket.broadcast.emit('user_connected', username);
     return username;
   }

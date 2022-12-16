@@ -46,14 +46,28 @@ const drawNewChat = (message) => {
 }  
   
 function helloUser() {
-    const username = prompt('What is your name?');
+    const username = prompt('사용할 이름을 입력해주세요');
+    if(!username){
+      alert('채팅방에 입장하려면 이름이 필요해요!.')
+      window.location.reload()
+    }
     socket.emit('new_user', username, (data) => {
         drawHelloStranger(data)
     });
 }
 
+function loadChat() {
+  socket.emit('load_chat',(data) => {
+    data.forEach(element => {
+      console.log(element.user.username)
+      drawNewChat(`${element.user.username}: ${element.chat}`)
+    });
+  })
+}
+
 function init() {
   helloUser();
+  loadChat()
   formElement.addEventListener('submit', handleSubmit);
 }
 
