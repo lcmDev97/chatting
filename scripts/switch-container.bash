@@ -2,8 +2,6 @@ cd /home/ubuntu/chattingApp
 pwd
 ls
 
-docker pull changmin97/chatting-image:latest
-
 DOCKER_APP_NAME=nestapp
 EXIST_GREEN=$(docker-compose -p nestapp-green -f docker-compose.green.yml ps | grep running)
 
