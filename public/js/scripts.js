@@ -66,7 +66,7 @@ function loadChat() {
 }
 
 function init() {
-  alert('alert for test')
+  // alert('alert for test')
   helloUser();
   loadChat()
   formElement.addEventListener('submit', handleSubmit);
