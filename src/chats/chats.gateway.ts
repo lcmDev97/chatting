@@ -58,8 +58,6 @@ export class ChatsGateway
     @MessageBody() username: string,
     @ConnectedSocket() socket: Socket,
   ) {
-
-    const exist = await this.socketModel.exists({ username });
     await this.socketModel.create({
       id: socket.id,
       username,
