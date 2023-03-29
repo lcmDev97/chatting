@@ -2,9 +2,10 @@
  
 
 🌉 아키텍처
+![채팅앱아키텍처](https://user-images.githubusercontent.com/119035068/228492627-e44621dd-3117-4c64-a246-0efcfcd9e722.png)
 
 
-<img src="https://user-images.githubusercontent.com/119035068/208230970-e9710d2f-e52f-4e17-8ad2-b90fd86c8dae.PNG" width="900" height="450"/>
+
 
 
 🛠 사용한 기술
