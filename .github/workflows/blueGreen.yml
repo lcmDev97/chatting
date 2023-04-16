@@ -3,7 +3,7 @@ name: Deploy NestJS Application
 # workflow_dispatch는 수동으로 workflow를 작동시키도록 할 수 있도록 합니다.
 on:
   push:
-    branches: [ CI_Test ]
+    branches: [ main ]
     
   workflow_dispatch:
 
@@ -51,23 +51,24 @@ jobs:
       - name: Build a Nest Application
         run: npm run build
         shell: bash
-      
-      # 레포지토리를 압축시킵니다.
-      # 다만 불필요한 node_module, coverage, src, test, readme, .git* 등의 파일은 제외시킵니다.
-      - name: Make a zip file
-        run: zip -r ./$GITHUB_SHA.zip . -x "node_modules/*" "coverage/*" "src/*" "test/*" "README.md" "*.git*"
-        shell: bash
-      
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v1-node16
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ${{ secrets.AWS_REGION }}
 
-      # 위에서 만든 zip 파일을 S3에 업로드 합니다.
-      - name: Upload to S3
-        run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
+      # S3 업로드 방식에서 dockerhub 업로드방식으로 변경하여 아래 코드 주석처리합니다.
+      # # 레포지토리를 압축시킵니다.
+      # # 다만 불필요한 node_module, coverage, src, test, readme, .git* 등의 파일은 제외시킵니다.
+      # - name: Make a zip file
+      #   run: zip -r ./$GITHUB_SHA.zip . -x "node_modules/*" "coverage/*" "src/*" "test/*" "README.md" "*.git*"
+      #   shell: bash
+      
+      # - name: Configure AWS credentials
+      #   uses: aws-actions/configure-aws-credentials@v1-node16
+      #   with:
+      #     aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY }}
+      #     aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     aws-region: ${{ secrets.AWS_REGION }}
+
+      # # 위에서 만든 zip 파일을 S3에 업로드 합니다.
+      # - name: Upload to S3
+      #   run: aws s3 cp --region ${{ secrets.AWS_REGION }} ./$GITHUB_SHA.zip s3://$S3_BUCKET_NAME/$PROJECT_NAME/$GITHUB_SHA.zip
 
       # CodeDeploy에게 deployment를 생성하도록 요청합니다.
       - name: Request Deployment
