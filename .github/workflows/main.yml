@@ -16,8 +16,8 @@ jobs:
     env:
       S3_BUCKET_NAME: nestjs-app-blue-green-deploy #S3 버킷 이름에 "_", 대문자 포함 불가능합니다.
       PROJECT_NAME: chattingApp 
-      AWS_CODEDEPLOY_APPLICATION_NAME: chattingApp_codeDeploy 
-      AWS_CODEDEPLOY_DEPLOYMENT_GROUP_NAME: chattingApp_codeDeploy_group
+      AWS_CODEDEPLOY_APPLICATION_NAME: nestjs_app_blueGreenDeploy
+      AWS_CODEDEPLOY_DEPLOYMENT_GROUP_NAME: nestjs_app_blueGreenDeployGroup
     
     steps:
       # 해당 workflow가 레포지토리에 접근할 수 있도록 해줍니다.
