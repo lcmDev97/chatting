@@ -1,0 +1,15 @@
+name: CI on all dev branch
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  Test:
+    name: Test Code on ${{ github.ref_name }} branch
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Run Test
+        uses: actions/checkout@v3
+      - run: npm ci
+      - run: npm test
