@@ -1,6 +1,6 @@
-DOCKER_IMAGE_NAME=chattingAppImage
+DOCKER_IMAGE_NAME=chattingapp-image #대문사 사용 불가
 
-DOCKER_CONTAINER_NAME=chattingAppContainer
+DOCKER_CONTAINER_NAME=chattingappimage-container
 
 docker build -t ${DOCKER_IMAGE_NAME} . # <--- 프로젝트 루트 경로에 대한 상대경로
 
