@@ -9,4 +9,6 @@ services:
     env_file:
       - ../envfiles/chatting.env
     networks:
-      - chatting-net
+      chatting-net:
+        external: true
+      # - chatting-net
