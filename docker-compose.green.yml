@@ -8,3 +8,11 @@ services:
       - '3001:3000'
     env_file:
       - ../envfiles/chatting.env
+networks:
+  chatting-net:
+    external: true
+    
+    # networks:
+    #   chatting-net:
+    #     external: true
+    #   # - chatting-net
